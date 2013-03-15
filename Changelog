@@ -2,6 +2,10 @@
 Nagios 3.x Change Log
 #####################
 
+3.5.1 - xx/xx/xxxx
+------------------
+* Fixed bug #432: Downtime scheduled as "Nagios Process" and not the Users name (Sam Lansing, Eric Stanley)
+
 3.5.0 - 03/15/2013
 ------------------
 * Fixed bug #403: The "configuration" page of the webui doesn't use entity encoding when displaying the "command expansion" item (Eric Stanley, Phil Randal)
