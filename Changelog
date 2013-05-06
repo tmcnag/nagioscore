@@ -4,6 +4,8 @@ Nagios 3.x Change Log
 
 3.5.1 - xx/xx/xxxx
 ------------------
+* Fixed bug #444: Nagios 3.5.0 problem with macro $ADMINEMAIL$ : @ is converted to %40 after 2 nagios reload (Duplicate of bug #407)
+* Fixed bug #407: Reloading nagios config causes spaces in notifications to become plus signs (Alexey Dvoryanchikov)
 * Fixed bug #445: Adding triggered downtime for child hosts causes a SIGSEGV on restart/reload (Eric Stanley)
 * Fixed bug #375: Freshness expiration never reached and bug #427: freshness threshold doesn't work if it is set long (Scott Wilkerson, Eric Stanley)
 * Fixed bug #432: Downtime scheduled as "Nagios Process" and not the Users name (Sam Lansing, Eric Stanley)
