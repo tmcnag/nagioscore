@@ -320,7 +320,8 @@ void process_language(char * accept_language) {
 			snprintf(locale_string, sizeof(locale_string), "%s_%s.%s",
 			         accept_langs->languages[ x]->language,
 			         accept_langs->languages[ x]->locality, "utf8");
-			locale = setlocale(LC_ALL, locale_string);
+			locale = setlocale(LC_CTYPE, locale_string);
+			if(NULL != locale) break;
 			}
 
 		free_accept_languages(accept_langs);
@@ -329,7 +330,7 @@ void process_language(char * accept_language) {
 		/* Try the fail safe locales */
 		for(x = 0; ((x < (sizeof(locale_failsafe) / sizeof(char *))) &&
 		            (NULL == locale)); x++) {
-			locale = setlocale(LC_ALL, locale_failsafe[ x]);
+			locale = setlocale(LC_CTYPE, locale_failsafe[ x]);
 			}
 		}
 	}
