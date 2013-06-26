@@ -2547,6 +2547,10 @@ void show_servicegroup_overview(servicegroup *temp_servicegroup) {
 		if(temp_host == NULL)
 			continue;
 
+		/* make sure user has rights to view this host */
+		if(is_authorized_for_host(temp_host, &current_authdata) == FALSE)
+			continue;
+
 		/* skip this if it isn't a new host... */
 		if(temp_host == last_host)
 			continue;
@@ -2752,6 +2756,10 @@ void show_servicegroup_host_totals_summary(servicegroup *temp_servicegroup) {
 		if(temp_host == NULL)
 			continue;
 
+		/* make sure user has rights to view this host */
+		if(is_authorized_for_host(temp_host, &current_authdata) == FALSE)
+			continue;
+
 		/* skip this if it isn't a new host... */
 		if(temp_host == last_host)
 			continue;
@@ -2930,6 +2938,10 @@ void show_servicegroup_service_totals_summary(servicegroup *temp_servicegroup) {
 		/* find the service */
 		temp_service = find_service(temp_member->host_name, temp_member->service_description);
 		if(temp_service == NULL)
+			continue;
+
+		/* make sure user has rights to view this service */
+		if(is_authorized_for_service(temp_service, &current_authdata) == FALSE)
 			continue;
 
 		/* skip this if it isn't a new service... */
@@ -3288,6 +3300,10 @@ void show_servicegroup_grid(servicegroup *temp_servicegroup) {
 		/* find the host */
 		temp_host = find_host(temp_member->host_name);
 		if(temp_host == NULL)
+			continue;
+
+		/* make sure user has rights to view this host */
+		if(is_authorized_for_host(temp_host, &current_authdata) == FALSE)
 			continue;
 
 		/* get the status of the host */
