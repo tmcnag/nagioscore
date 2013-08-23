@@ -4,6 +4,7 @@ Nagios 3.x Change Log
 
 3.5.1 - xx/xx/xxxx
 ------------------
+* Added handler for SIGXFSZ signal (Eric Stanley)
 * Fixed bug #444: Nagios 3.5.0 problem with macro $ADMINEMAIL$ : @ is converted to %40 after 2 nagios reload (Duplicate of bug #407)
 * Fixed bug #407: Reloading nagios config causes spaces in notifications to become plus signs (Alexey Dvoryanchikov)
 * Fixed bug #445: Adding triggered downtime for child hosts causes a SIGSEGV on restart/reload (Eric Stanley)
