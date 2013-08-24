@@ -289,8 +289,7 @@ extern int errno;
 #endif
 
 
-void handle_sigxfsz(int);
-long long check_file_size(char *, unsigned long, struct rlimit);
+static long long check_file_size(char *, unsigned long, struct rlimit);
 
 /******************************************************************/
 /******************** SYSTEM COMMAND FUNCTIONS ********************/
@@ -1791,7 +1790,6 @@ void setup_sighandler(void) {
 	signal(SIGQUIT, sighandler);
 	signal(SIGTERM, sighandler);
 	signal(SIGHUP, sighandler);
-	signal(SIGXFSZ, handle_sigxfsz);
 	if(daemon_dumps_core == FALSE && daemon_mode == TRUE)
 		signal(SIGSEGV, sighandler);
 
@@ -1929,7 +1927,8 @@ void handle_sigxfsz(int sig) {
 	limits. Returns the file size if file is OK, 0 if it's status could not 
 	be determined, or -1 if not OK. fudge is the fudge factor (in bytes) for 
 	checking the file size */
-long long check_file_size(char *path, unsigned long fudge, struct rlimit rlim) {
+static long long check_file_size(char *path, unsigned long fudge, 
+		struct rlimit rlim) {
 
 	struct stat status;
 

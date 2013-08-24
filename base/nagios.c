@@ -438,6 +438,12 @@ int main(int argc, char **argv, char **env) {
 		exit(ERROR);
 		}
 
+	/*
+	 * Set the signal handler for the SIGXFSZ signal here because
+	 * we may encounter this signal before the other signal handlers
+	 * are set.
+	 */
+	signal(SIGXFSZ, handle_sigxfsz);                                            
 
 	/* config file is last argument specified */
 	config_file = (char *)strdup(argv[optind]);
