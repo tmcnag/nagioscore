@@ -2,6 +2,10 @@
 Nagios 3.x Change Log
 #####################
 
+3.5.2 - xx/xx/xxxx
+------------------
+* Backport of commit d97e03f32741a7d851826b03ed73ff4c9612a866 (Fixed minor vulnerability where a custom query could crash the CGI.)
+
 3.5.1 - 08/30/2013
 ------------------
 * Added handler for SIGXFSZ signal (Eric Stanley)
